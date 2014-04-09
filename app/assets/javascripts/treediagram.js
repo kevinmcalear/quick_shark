@@ -52,7 +52,7 @@ function draw(treeData) {
   } else {
     // Create the svg canvas (at #viz)
     var vis = d3.select("#viz").append("svg:svg")
-      .call(d3.behavior.zoom().scaleExtent([0, 8]).on("zoom", zoom))
+      // .call(d3.behavior.zoom().scaleExtent([0, 8]).on("zoom", zoom))
       .attr("width", "100%")
       .attr("height", "89%")
       .append("svg:g")

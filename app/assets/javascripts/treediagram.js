@@ -14,12 +14,12 @@ function draw(treeData) {
         .duration(800)
         .style("fill", "white")
   }
-  function animateText() { 
+  function animateText() {
     if(this.id !== $("h1").text()){
       d3.select(this)
         .transition()
           .duration(100)
-          .style("font-size", "16px")   
+          .style("font-size", "16px")
           .style("cursor", "pointer")
           .style("fill", "rgb(0,154,205)")
     }
@@ -52,7 +52,7 @@ function draw(treeData) {
   } else {
     // Create the svg canvas (at #viz)
     var vis = d3.select("#viz").append("svg:svg")
-      // .call(d3.behavior.zoom().scaleExtent([0, 8]).on("zoom", zoom))
+      .call(d3.behavior.zoom().scaleExtent([0, 8]).on("zoom", zoom))
       .attr("width", "100%")
       .attr("height", "89%")
       .append("svg:g")
@@ -63,7 +63,7 @@ function draw(treeData) {
     var cluster = d3.layout.cluster()
       .size([360,425]);
 
-    
+
     // **TAKE THE DATA AND CREATE "NODES" ON THE CLUSTER CANVAS**
     var nodes = cluster.nodes(treeData);
 
@@ -90,7 +90,7 @@ function draw(treeData) {
       .attr("id", function(d){ return d.name })
       .attr("class", function(){ return "words" })
       .on("click", function(d,i) {
-        words = d.name.split(" "); 
+        words = d.name.split(" ");
         if(words.length < 3){
           addTopic($("span#journey_id").text(), d.name);
           count = 0;
@@ -120,9 +120,9 @@ function draw(treeData) {
       .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
       .attr("transform", function(d) { return d.x < 180 ? null : "rotate(180)"; })
       .text(function(d) {
-        words = d.name.split(" "); 
+        words = d.name.split(" ");
         if(words.length > 3){
-          return words[0]+" "+words[1]+" "+words[2]+"..."; 
+          return words[0]+" "+words[1]+" "+words[2]+"...";
         } else {
           return d.name;
         }
@@ -180,12 +180,12 @@ window.onload = function() {
 function makeTimeline() {
  var test = $("div#past_topics").children()
 
-  for(i = 0; i < test.length; i++) { 
-    if(test[i].id === "sup") { 
+  for(i = 0; i < test.length; i++) {
+    if(test[i].id === "sup") {
       $(test[i]).darkTooltip({
         animation:'flipIn',
         gravity:'north'
-      }); 
+      });
     };
   };
 };
